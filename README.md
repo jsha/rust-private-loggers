@@ -51,3 +51,24 @@ independent copies of common Rust code. Whether this tradeoff is worthwhile
 depends on your intended use for the library. I think in most libraries intended
 for general use, making dependencies "private" via this technique is the right
 solution.
+
+# Try It Out
+
+Clone this repo, then run `make test`.
+
+This will build two Rust staticlibs, logginglib1 and logginglib2. Each one
+registers its own `Log` impl that writes to stdout. Logginglib1 prefixes its
+lines with `one: `; logginglib2 prefixes its lines with `two: `. In a more
+realistic deployment, these libraries might offer a callback-based API so that
+applications or other libraries can register to receive log lines.
+
+The Makefile builds each of logginglib1 and logginglib2 with a different
+`RUSTFLAGS="-C metadata=..."`, and then links both of them into a small C
+program `main.c`. That program calls a function in each library that generates
+a log line. The expected output is:
+
+```
+./main
+one: hello
+two: goodbye
+```
