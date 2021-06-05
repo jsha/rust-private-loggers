@@ -1,0 +1,10 @@
+[package]
+name = "logginglib2"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+log = { version = "0.4.14", features = [ "std" ] }
+
+[lib]
+crate-type = ["lib", "staticlib"]
