@@ -26,10 +26,10 @@ Rust can use two versions of the same crate in one library, thanks to "name
 mangling" and a "disambiguator." It assigns different names to symbols from
 each of the crates.
 
-Rustc controls the disambiguator with the `-C metadata=...` compiler flag, which
+Cargo controls the disambiguator by passing `-C metadata=...` flag to rustc, which
 can be specified multiple times. Cargo does dependency resolution to figure out
 what it needs to provide for the metadata flag in order to ensure that if
-multiple version of a crate need to be linked, they don't conflict with each
+multiple versions of a crate need to be linked, they don't conflict with each
 other.
 
 You can use the RUSTFLAGS environment variable to add your own `-C metadata=...`

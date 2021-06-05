@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-ackbar = { version = "0.4.14", features = [ "std" ], package = "log" }
+log = { version = "0.4.14", features = [ "std" ] }
 
 [lib]
 crate-type = ["lib", "staticlib"]

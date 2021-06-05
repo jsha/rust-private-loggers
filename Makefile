@@ -1,8 +1,8 @@
 logginglib1/target/debug/liblogginglib1.a:
-	RUSTFLAGS="-C metadata=something_unique" cargo build --manifest-path logginglib1/Cargo.toml
+	RUSTFLAGS="-C metadata=something_unique" cargo build -v --manifest-path logginglib1/Cargo.toml
 
 logginglib2/target/debug/liblogginglib2.a:
-	RUSTFLAGS="-C metadata=more_unique" cargo build --manifest-path logginglib2/Cargo.toml
+	RUSTFLAGS="-C metadata=more_unique" cargo build -v --manifest-path logginglib2/Cargo.toml
 
 main: logginglib1/target/debug/liblogginglib1.a logginglib2/target/debug/liblogginglib2.a
 	cc -o main main.c -L logginglib2/target/debug/ -llogginglib2 -L logginglib1/target/debug/ -llogginglib1 -lpthread -ldl
